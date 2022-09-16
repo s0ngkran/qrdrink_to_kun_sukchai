@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../../app_service.dart';
+import '../../../../shared/utils/common.dart';
+import '../../../service_screen/staff_profile_scr.dart';
+
+class UiPerson {
+  final String? id;
+  final String? nickname;
+  final String? firstName;
+  final String? lastName;
+  final String? email;
+  final LevelStaff? level;
+  final String? branchFk;
+  final int? exp;
+  final double? wallet;
+  final String? tel;
+  final String? address;
+  final String? facebook;
+  final String? line;
+  final String? ig;
+  final String? imageUrl;
+  final DateTime? lastLogin;
+  final StaffStatus? status;
+  final bool? isFrontStaff;
+  UiPerson({
+    this.isFrontStaff,
+    this.email,
+    this.wallet,
+    this.level,
+    this.branchFk,
+    this.exp,
+    this.tel,
+    this.address,
+    this.facebook,
+    this.line,
+    this.ig,
+    this.imageUrl,
+    this.lastLogin,
+    required this.id,
+    this.nickname,
+    this.firstName,
+    this.lastName,
+    this.status = StaffStatus.offline,
+  });
+
+  build() {
+    final AppService app = Get.find();
+    bool isShowMoney = (app.profileData.value.level?.level ?? 0) >= LevelStaff.cashier.level;
+    return InkWell(
+      onTap: () {
+        // C.dialogNotAvailable();
+        Get.to(() => StaffProfileScr(
+              p: this,
+            ));
+      },
+      child: SizedBox(
+        width: 60,
+        height: isShowMoney ? 60 + 10 : 60,
+        child: Column(
+          children: [
+            C.hero(
+              '$id',
+              child: C.personEmpty(),
+              onTap: null,
+            ),
+            C.hero(
+              'nickname $id',
+              onTap: null,
+              child: Text(
+                ' ${nickname?.keep(8)} ',
+                style: const TextStyle(
+                  fontSize: 10,
+                ),
+              ),
+            ),
+            if (isShowMoney)
+              Text(
+                '${wallet?.n}',
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              )
+            // C.textPP(
+            //   (nickname ?? '-').padRight(6).substring(0, 6).replaceAll(' ', ''),
+            //   overflow: TextOverflow.visible,
+            // ),
+            // const Text('text')
+          ],
+        ),
+      ),
+    );
+  }
+}

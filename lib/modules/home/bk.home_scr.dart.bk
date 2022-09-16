@@ -1,0 +1,220 @@
+// import 'package:flutter/material.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:get/get.dart';
+
+// import '../../app_service.dart';
+// import '../../models/branchs_res/branchs_res.dart';
+// import '../../models/login_res/login_res.dart';
+// import '../../routes/app_pages.dart';
+// import '../../shared/constants/colors.dart';
+// import '../../shared/utils/common.dart';
+// import '../auth/login_ctl.dart';
+// import '../settings/branch_scr.dart';
+// import 'contents/cannot_call_server_scr.dart';
+// import 'contents/change_password_scr.dart';
+// import 'contents/invite_scr.dart';
+// import 'contents/loading_scr.dart';
+// import 'contents/open_table_scr.dart';
+// import 'contents/profile_scr.dart';
+// import 'contents/revenue_scr.dart';
+// import 'contents/staff_scr.dart';
+// import 'contents/table_scr.dart';
+// import 'home_ctl.dart.bx';
+// import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+
+// // ignore: must_be_immutable
+// class HomeScr extends StatelessWidget {
+//   // @override
+//   // HomeCtl get ctl {
+//   //   // print('in get ctl argument:${Get.arguments}');
+//   //   // var providedCtl = Get.arguments;
+//   //   // if (providedCtl == null) {
+//   //   //   return GetInstance().find<HomeCtl>(tag: tag);
+//   //   // } else {
+//   //   //   return providedCtl;
+//   //   // }
+//   //   return GetInstance().find<HomeCtl>(tag: tag);
+//   // }
+
+//   HomeScr({
+//     Key? key,
+//   }) : super(key: key);
+//   HomeCtl ctl = Get.find<HomeCtl>();
+//   AppService app = Get.find<AppService>();
+
+//   ValueNotifier<bool> isDialOpen = ValueNotifier(false);
+//   // GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return WillPopScope(
+//       onWillPop: () async {
+//         if (isDialOpen.value) {
+//           isDialOpen.value = false;
+//           return false;
+//         } else {
+//           return true;
+//         }
+//       },
+//       child: Obx(() => buildObx(context)),
+//     );
+//   }
+
+//   buildObx(context) {
+//     // var pageName = text[Get.locale] as Map;
+
+//     // app.homeScaffoldKey.value = homeScaffoldKey;
+//     return Scaffold(
+//         key: app.homeScaffoldKey.value,
+//         drawer: SafeArea(
+//           top: false,
+//           bottom: false,
+//           child: C.drawer(context, ctl),
+//         ),
+//         // bottomNavigationBar: bottomBar(context, ctl),
+//         // FAB
+//         // FAB
+//         // FAB
+//         // FAB
+//         // FAB
+//         floatingActionButton: MyFAB(isDialOpen: isDialOpen),
+//         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+//         // appBar
+//         // appBar
+//         // appBar
+//         // appBar
+//         // appBar
+//         appBar: C.appBar(
+//           context,
+//           null,
+//         ),
+//         body: ctl.checkingToken.value
+//             ? LoadingScr()
+//             // LoadingScr()
+//             : Column(
+//                 children: <Widget>[
+//                   Text('${ctl.page.value}'),
+//                   if (ctl.page.value == Pages.loading) LoadingScr(),
+//                   if (ctl.page.value == Pages.cannotCallServer) CannotCallServerScr(),
+//                   if (ctl.page.value == Pages.staff) StaffScr(),
+//                   if (ctl.page.value == Pages.table) TableScr(),
+//                   if (ctl.page.value == Pages.revenue) RevenueScr(),
+//                   if (ctl.page.value == Pages.invite) InviteScr(),
+//                   if (ctl.page.value == Pages.branch) BranchScr(),
+//                   if (ctl.page.value == Pages.changePassword) ChangePasswordScr(),
+//                   if (ctl.page.value == Pages.profile) ProfileScr(),
+//                   if (ctl.page.value == Pages.openTable) OpenTableScr(),
+//                 ],
+//               ));
+//   }
+// }
+
+// class MyFAB extends StatelessWidget {
+//   final isDialOpen;
+//   HomeCtl ctl = Get.find<HomeCtl>();
+//   MyFAB({
+//     Key? key,
+//     required this.isDialOpen,
+//   }) : super(key: key);
+//    AppService app = Get.find<AppService>();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     var level = app.profileData.value.level ?? 0;
+//     var childBackgroundColor = CC.primary;
+//     var childForegroundColor = CC.onPrimary;
+//     return SpeedDial(
+//       foregroundColor: CC.onPrimary,
+//       backgroundColor: CC.primaryDark,
+//       // onPressed: () {
+//       //   C.dialog();
+//       // },
+//       // child: const Text('+',
+//       //     style: TextStyle(
+//       //       fontSize: 37,
+//       //     )),
+//       animatedIcon: AnimatedIcons.view_list,
+//       openCloseDial: isDialOpen,
+//       // icon: FontAwesomeIcons.bullhorn,
+//       // activeIcon: FontAwesomeIcons.chevronUp,
+//       overlayColor: Colors.grey,
+//       overlayOpacity: 0.5,
+//       spacing: 8,
+//       spaceBetweenChildren: 15,
+//       closeManually: true,
+//       // childMargin: EdgeInsets.all(32.0),
+//       children: [
+//         /// manager view
+//         if (level >= LevelUser.manager) ...[
+//           _buildSpeedDialChild(
+//               child: const Icon(FontAwesomeIcons.brandsFontAwesome),
+//               label: 'ตั้งค่า สาขา',
+//               onTap: () async {
+//                 isDialOpen.value = false;
+//                 await ctl.fetchBranchs();
+//                 ctl.page.value = Pages.branch;
+//                 // Get.to(RandomScr());
+//               }),
+//           _buildSpeedDialChild(
+//               child: const Icon(FontAwesomeIcons.userPlus),
+//               label: 'เชิญพนักงาน',
+//               onTap: () {
+//                 isDialOpen.value = false;
+//                 ctl.page.value = Pages.invite;
+//                 // Get.to(RandomScr());
+//               }),
+//           _buildSpeedDialChild(
+//               child: const Icon(FontAwesomeIcons.users),
+//               label: 'พนักงาน',
+//               onTap: () {
+//                 isDialOpen.value = false;
+//                 ctl.page.value = Pages.staff;
+//                 // Get.to(RandomScr());
+//               }),
+//           _buildSpeedDialChild(
+//               child: const Icon(FontAwesomeIcons.dollarSign),
+//               label: 'ยอดขาย',
+//               onTap: () {
+//                 isDialOpen.value = false;
+//                 ctl.page.value = Pages.revenue;
+//                 // Get.to(RandomScr());
+//               }),
+//         ],
+
+//         /// staff view
+//         _buildSpeedDialChild(
+//             child: const Icon(FontAwesomeIcons.chair),
+//             label: 'โต๊ะ',
+//             onTap: () {
+//               isDialOpen.value = false;
+//               ctl.page.value = Pages.table;
+//               // Get.to(RandomScr());
+//             }),
+//         _buildSpeedDialChild(
+//             child: const Icon(FontAwesomeIcons.flag),
+//             label: 'เปิดโต๊ะ',
+//             onTap: () {
+//               // fetching branch
+//               isDialOpen.value = false;
+//               ctl.page.value = Pages.openTable;
+//               // Get.to(RandomScr());
+//             }),
+//       ],
+//     );
+//   }
+
+//   _buildSpeedDialChild({child, label, onTap}) {
+//     return SpeedDialChild(
+//       backgroundColor: CC.primary,
+//       foregroundColor: CC.onPrimary,
+//       labelBackgroundColor: CC.primary,
+//       labelStyle: TextStyle(
+//         color: CC.onPrimary,
+//       ),
+//       child: child,
+//       label: label,
+//       onTap: onTap,
+//     );
+//   }
+// }

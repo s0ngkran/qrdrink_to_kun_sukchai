@@ -1,0 +1,178 @@
+// import 'package:animated_text_kit/animated_text_kit.dart';
+// import 'package:badges/badges.dart';
+// import 'package:flutter/material.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:get/get.dart';
+
+// class ChatScr extends StatelessWidget {
+//   ChatScr({Key? key}) : super(key: key);
+
+//   final HomeCtl ctl = Get.find<HomeCtl>();
+//   @override
+//   Widget build(BuildContext context) {
+//     return WillPopScope(
+//       onWillPop: () async => false,
+//       child: Obx(() => buildObx(context)),
+//     );
+//   }
+
+//   Widget buildObx(BuildContext context) {
+//     var messages = [
+//       {
+//         'name': 'sssk',
+//         'message': 'มาถึงแล้ววว',
+//       },
+//       {
+//         'name': 'otet',
+//         'message': 'มาถึงแล้ววว ttoc',
+//       },
+//       {
+//         'name': 'tttt',
+//         'message': 'มาถึงแล้ววว hhoech',
+//       },
+//       {
+//         'name': 'ooo',
+//         'message': 'มาถึง',
+//       },
+//       {
+//         'name': 'ttt',
+//         'message': 'มาถึงแล้ววว ehh',
+//       },
+//     ];
+//     return Expanded(
+//       child: Stack(
+//         children: [
+//           Row(
+//             children: [
+//               SizedBox(
+//                 width: MediaQuery.of(context).size.width,
+//                 child: Column(
+//                   children: [
+//                     Visibility(
+//                       visible: false,
+//                       child: Text(ctl.dummy.value),
+//                     ),
+//                     C.rowH(),
+//                     ...messages.map(
+//                       (e) => Row(
+//                         mainAxisAlignment: (e['name'] != 'ooo')
+//                             ? MainAxisAlignment.start
+//                             : MainAxisAlignment.end,
+//                         children: [
+//                           if (e['name'] != 'ooo')
+//                             Padding(
+//                               padding: const EdgeInsets.all(2.0),
+//                               child: CircleAvatar(
+//                                 backgroundColor: CC.grey2,
+//                                 foregroundColor: CC.grey5,
+//                                 radius: 18,
+//                                 child: Icon(FontAwesomeIcons.user),
+//                               ),
+//                             ),
+//                           Padding(
+//                             padding: (e['name'] != 'ooo')
+//                                 ? const EdgeInsets.all(4)
+//                                 : EdgeInsets.only(
+//                                     left: 4,
+//                                     right: 16,
+//                                     top: 4,
+//                                     bottom: 4,
+//                                   ),
+//                             child: Container(
+//                               decoration: BoxDecoration(
+//                                 color: (e['name'] != 'ooo')
+//                                     ? CC.grey2
+//                                     : CC.backgroundColor,
+//                                 borderRadius: (e['name'] != 'ooo')
+//                                     ? BorderRadius.only(
+//                                         topLeft: Radius.circular(50),
+//                                         // bottomLeft: Radius.circular(50),
+//                                         topRight: Radius.circular(50),
+//                                         bottomRight: Radius.circular(50),
+//                                       )
+//                                     : BorderRadius.only(
+//                                         topLeft: Radius.circular(50),
+//                                         bottomLeft: Radius.circular(50),
+//                                         topRight: Radius.circular(50),
+//                                       ),
+//                               ),
+//                               child: Padding(
+//                                 padding: const EdgeInsets.all(8.0),
+//                                 child: Text(e['message'] ?? '',
+//                                     style: TextStyle(
+//                                       fontSize: 16,
+//                                     )),
+//                               ),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//           Positioned(
+//             bottom: 0,
+//             child: Row(
+//               children: [
+//                 Padding(
+//                   padding: const EdgeInsets.all(16),
+//                   child: SizedBox(
+//                     width: MediaQuery.of(context).size.width - 32,
+//                     // height: 80,
+//                     child: KeyboardVisibilityBuilder(
+//                       builder: (context, isKeyboardVisible) {
+//                         var widthIcon = 50.0;
+//                         var showIcon = false;
+//                         if (isKeyboardVisible) {
+//                           showIcon = true;
+//                         } else {
+//                           widthIcon = 0;
+//                         }
+//                         return Form(
+//                           key: ctl.chatFormKey,
+//                           child: Row(
+//                             children: [
+//                               SizedBox(
+//                                 width: MediaQuery.of(context).size.width -
+//                                     32 -
+//                                     widthIcon,
+//                                 child: C.inputForm(
+//                                   ctl.textBox,
+//                                   labelText: 'ทักทายโต๊ะข้าง ๆ . . .',
+//                                   validator: (val) {
+//                                     return null;
+//                                   },
+//                                   isRound: true,
+//                                 ),
+//                               ),
+//                               if (showIcon)
+//                                 InkWell(
+//                                   onTap: () {
+//                                     ctl.sendChat();
+//                                   },
+//                                   child: SizedBox(
+//                                     width: widthIcon,
+//                                     child: const Padding(
+//                                       padding: EdgeInsets.all(8.0),
+//                                       child: Icon(FontAwesomeIcons.paperPlane),
+//                                     ),
+//                                   ),
+//                                 ),
+//                             ],
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

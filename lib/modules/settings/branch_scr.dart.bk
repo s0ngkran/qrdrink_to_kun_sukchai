@@ -1,0 +1,514 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:aaa/modules/home/contents/branch/category_scr.dart';
+import 'package:aaa/modules/home/contents/branch/service_scr.dart';
+import 'package:aaa/modules/home/contents/branch/staff_list_scr.dart';
+import 'package:aaa/modules/home/contents/branch/stock_scr.dart';
+import 'package:aaa/modules/home/contents/branch/zone_scr.dart';
+import '../../models/branchs_res/branch.dart';
+import '../../models/branchs_res/category_set.dart';
+import '../../shared/constants/colors.dart';
+import '../../shared/utils/common.dart';
+import '../../shared/utils/my_view.dart';
+import '../../shared/widgets/my_drawer.dart';
+import '../home/home_ctl.dart';
+import '../home/contents/branch/component.dart';
+import 'setting_ctl.dart';
+
+class BranchScr extends View<SettingCtl> {
+  BranchScr({Key? key}) : super(key: key);
+
+  GlobalKey keyScroll = GlobalKey();
+  GlobalKey keyListView = GlobalKey();
+  final HomeCtl homeCtl = Get.find();
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Obx(() => buildObx(context)),
+    );
+  }
+
+  Widget buildObx(BuildContext context) {
+    var activeColor = CC.primary;
+    var inActiveColor = CC.grey;
+    var staffs = ctl.staffs.value.data?.staffs;
+    var nChainManager = staffs?.where(
+      (e) => e.level == LevelUser.chainManager,
+    );
+    var nManager = staffs?.where(
+      (e) => e.level == LevelUser.manager,
+    );
+    var nCashier = staffs?.where(
+      (e) => e.level == LevelUser.cashier,
+    );
+    var nBackStaff = staffs?.where(
+      (e) => e.level == LevelUser.backStaff,
+    );
+    var nFrontStaff = staffs?.where(
+      (e) => e.level == LevelUser.frontStaff,
+    );
+
+    return Scaffold(
+      appBar: C.appBar(
+        context,
+        'Branch',
+      ),
+      drawer: MyDrawer(
+        ctl: homeCtl,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Scrollbar(
+                    child: SingleChildScrollView(
+                      key: keyScroll,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Visibility(
+                            visible: false,
+                            child: Text('${ctl.dummy.value} ${ctl.branchs.value}'),
+                          ),
+
+                          ////// branchs
+                          ////// branchs
+                          ////// branchs
+                          ////// branchs
+                          ////// branchs
+                          Container(
+                            color: CC.grey2,
+                            child: Column(
+                              children: [
+                                C.rowH(),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 70,
+                                  child: ListView(
+                                    key: keyListView,
+                                    scrollDirection: Axis.horizontal,
+                                    children: <Widget>[
+                                      C.rowW(),
+                                      ...(ctl.branchs.value.data?.branchs ?? [Branch(name: 'สาขา')]).map(
+                                        (e) => BranchButton(
+                                          isActive: ctl.selectedBranchId.value == e.id,
+                                          title: e.name ?? '--',
+                                          onTap: () {
+                                            ctl.selectedBranchId.value = e.id ?? '';
+                                          },
+                                        ),
+                                      ),
+                                      C.rowW(),
+                                      C.buttonAdd(() {
+                                        ctl.branchName.text = 'สาขาใหม่';
+                                        C.dialog(
+                                          title: 'สร้างสาขาใหม่',
+                                          content: Form(
+                                            key: ctl.keyFormNewBranch,
+                                            child: Column(
+                                              children: <Widget>[
+                                                C.inputForm(ctl.branchName, labelText: 'ชื่อสาขาใหม่', validator: (val) {
+                                                  return;
+                                                }),
+                                              ],
+                                            ),
+                                          ),
+                                          actions: [
+                                            C.button('ยืนยัน', () async {
+                                              SSS status = await ctl.createBranch();
+                                              switch (status) {
+                                                case SSS.success:
+                                                  Get.back();
+                                                  break;
+                                                default:
+                                                  C.dialogError('สร้างสาขาใหม่ ไม่สำเร็จ');
+                                              }
+                                            })
+                                          ],
+                                        );
+                                      }),
+                                      C.rowW(),
+                                      C.rowW(),
+                                      C.rowW(),
+                                    ],
+                                  ),
+                                ),
+                                C.rowH(),
+                              ],
+                            ),
+                          ),
+
+                          ///// this branch
+                          ///// this branch
+                          ///// this branch
+                          ///// this branch
+                          ///// this branch
+                          Text('text bid${ctl.branchId.value}-- bs${ctl.branchs.value.data?.branchs}--'),
+                          ...((ctl.branchs.value.data?.branchs) ?? [Branch(id: '')]).map(
+                            (branch) {
+                              return Visibility(
+                                visible: branch.id == ctl.branchId.value,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text('text'),
+
+                                    ///
+                                    ///
+                                    ///
+                                    ///
+                                    ///
+                                    //// stock
+                                    //// stock
+                                    //// stock
+                                    //// stock
+                                    C.rowH(),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SizedBox(
+                                            height: 150,
+                                            child: C.cardInkWell(
+                                              'ซื้อของเข้า\nStock',
+                                              () {
+                                                ctl.setBranch(branch.id!);
+                                                Get.to(StockScr());
+                                              },
+                                              width: 150,
+                                              icon: const Icon(FontAwesomeIcons.cartShopping),
+                                              color: CC.background,
+                                              textColor: CC.onBackground,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SizedBox(
+                                            height: 150,
+                                            child: C.cardInkWell(
+                                              'ตรวจสอบ\nStock',
+                                              () {},
+                                              width: 150,
+                                              icon: const Icon(FontAwesomeIcons.checkToSlot),
+                                              color: CC.background,
+                                              textColor: CC.onBackground,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+
+                                    /// setting
+                                    /// setting
+                                    /// setting
+                                    /// setting branch
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Card(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                C.rowW(),
+                                                C.textH6('ตั้งค่าสาขา'),
+                                              ],
+                                            ),
+                                            MySwitch(
+                                              switchListTile: SwitchListTile(
+                                                activeColor: CC.primary,
+                                                activeTrackColor: CC.primaryLight,
+                                                value: true,
+                                                title: C.textP(
+                                                  'เปิดให้บริการสาขานี้',
+                                                  normal: 8,
+                                                ),
+                                                subtitle: C.textPP('ปิดเมนูนี้ เพื่อปิดสาขาโดยไม่ทิ้งเก็บข้อมูล'),
+                                                onChanged: (val) {},
+                                              ),
+                                            ),
+                                            MySwitch(
+                                              switchListTile: SwitchListTile(
+                                                activeColor: CC.primary,
+                                                activeTrackColor: CC.primaryLight,
+                                                value: false,
+                                                title: C.textP(
+                                                  'จ่ายทีหลัง',
+                                                  normal: 8,
+                                                ),
+                                                subtitle: C.textPP('ลูกค้าไม่ต้องจ่ายทันที หลังจากได้รับเครื่องดื่ม'),
+                                                onChanged: (val) {},
+                                              ),
+                                            ),
+                                            C.rowH(),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    ///// branch detail
+                                    ///// branch detail
+                                    ///// branch detail
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Card(
+                                        child: Stack(
+                                          children: [
+                                            const MyIcon(
+                                              iconData: FontAwesomeIcons.personMilitaryPointing,
+                                            ),
+                                            Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Row(
+                                                  children: [
+                                                    C.rowW(),
+                                                    C.textH6('ระบบคิวพนักงาน เมื่อลูกค้าสั่งเครื่องดื่ม'),
+                                                  ],
+                                                ),
+                                                ListTile(
+                                                  selected: ctl.staffMode.value == StaffMode.queNormal,
+                                                  leading: ctl.staffMode.value == StaffMode.queNormal ? Icon(FontAwesomeIcons.circleCheck, color: Colors.green) : const Icon(FontAwesomeIcons.circle),
+                                                  title: C.textP('เข้าคิวปกติ (ค่าเริ่มต้น)'),
+                                                  subtitle: C.textPP('จัดคิวพนักงานเสิร์ฟ ให้ทุกคนทำงานเท่า ๆ กัน'),
+                                                  onTap: () {
+                                                    ctl.staffMode.value = StaffMode.queNormal;
+                                                  },
+                                                ),
+                                                ListTile(
+                                                  selected: ctl.staffMode.value == StaffMode.queZone,
+                                                  leading: ctl.staffMode.value == StaffMode.queZone ? Icon(FontAwesomeIcons.circleCheck, color: Colors.green) : const Icon(FontAwesomeIcons.circle),
+                                                  title: C.textP('เข้าคิวตามโซน'),
+                                                  subtitle: C.textPP('จัดคิวพนักงานเสิร์ฟ ให้ทุกคนทำงานเท่า ๆ กัน ตามโซนที่ได้ตั้งค่าไว้'),
+                                                  onTap: () {
+                                                    ctl.staffMode.value = StaffMode.queZone;
+                                                  },
+                                                ),
+                                                ListTile(
+                                                  selected: ctl.staffMode.value == StaffMode.eachTable,
+                                                  leading: ctl.staffMode.value == StaffMode.eachTable ? const Icon(FontAwesomeIcons.circleCheck, color: Colors.green) : const Icon(FontAwesomeIcons.circle),
+                                                  title: C.textP('โต๊ะใครโต๊ะมัน'),
+                                                  subtitle: C.textPP('พนักงานเสิร์ฟ ดูแลโต๊ะตามที่ตั้งค่าไว้'),
+                                                  onTap: () {
+                                                    ctl.staffMode.value = StaffMode.eachTable;
+                                                  },
+                                                ),
+                                                C.rowH(),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    BranchCard(
+                                      iconData: FontAwesomeIcons.beerMugEmpty,
+                                      tag: 'all products',
+                                      title: 'สินค้าทั้งหมด',
+                                      content: [
+                                        ...(branch.categorySet ?? [CategorySet(name: 'เพิ่ม')]).map(
+                                          (cat) => C.textP(
+                                            '     - ${cat.name} (${cat.productSet?.length ?? 0})',
+                                          ),
+                                        ),
+                                      ],
+                                      onTap: () {
+                                        ctl.setBranch(branch.id!);
+                                        ctl.setFirstCategoryId();
+                                        ctl.orderEditing.value = false;
+                                        // Get.to(
+                                        //   CategoryProductScr(),
+                                        // );
+                                        Get.to(CategoryScr());
+                                      },
+                                    ),
+
+                                    /// product
+                                    /// product
+                                    /// product
+                                    /// product
+
+                                    BranchCard(
+                                      iconData: FontAwesomeIcons.child,
+                                      tag: 'staff title',
+                                      title: 'พนักงานทั้งหมด',
+                                      content: [
+                                        if ((nChainManager?.length ?? 0) > 0) C.textP('     ${LevelUser.wordChainManager} (${nChainManager?.length})'),
+                                        if ((nManager?.length ?? 0) > 0) C.textP('     ${LevelUser.wordManager} (${nManager?.length})'),
+                                        if ((nCashier?.length ?? 0) > 0) C.textP('     ${LevelUser.wordCashier} (${nCashier?.length})'),
+                                        if ((nBackStaff?.length ?? 0) > 0) C.textP('     ${LevelUser.wordBackStaff} (${nBackStaff?.length})'),
+                                        if ((nFrontStaff?.length ?? 0) > 0) C.textP('     ${LevelUser.wordFrontStaff} (${nFrontStaff?.length})'),
+                                      ],
+                                      onTap: () async {
+                                        await ctl.setBranch(branch.id!);
+                                        Get.to(
+                                          StaffListScr(),
+                                        );
+                                      },
+                                    ),
+
+                                    /// zone
+                                    /// zone
+                                    /// zone
+                                    BranchCard(
+                                      iconData: FontAwesomeIcons.chair,
+                                      tag: 'table',
+                                      title: 'โต๊ะทั้งหมด',
+                                      content: [
+                                        ...(branch.zoneSet ?? []).map(
+                                          (zone) => Visibility(
+                                            visible: zone.isActive == true,
+                                            child: C.textP('     ${zone.name} (${zone.tableSet?.length ?? 0})'),
+                                          ),
+                                        ),
+                                      ],
+                                      onTap: () async {
+                                        await ctl.setBranch(branch.id!);
+                                        Get.to(
+                                          ZoneScr(),
+                                        );
+                                      },
+                                    ),
+
+                                    /// services
+                                    /// services
+                                    /// services
+                                    /// services
+                                    BranchCard(
+                                      iconData: FontAwesomeIcons.bellConcierge,
+                                      tag: 'all services',
+                                      title: 'บริการเสริมทั้งหมด',
+                                      content: [
+                                        ...(branch.serviceSet ?? []).map(
+                                          (ser) => C.textP('     ${ser.name}'),
+                                        ),
+                                      ],
+                                      onTap: () {
+                                        ctl.setBranch(branch.id!);
+                                        Get.to(ServiceScr());
+                                      },
+                                    ),
+
+                                    //// template
+                                    //// template
+                                    //// template
+                                    //// template
+
+                                    /// actions button for this branch
+                                    /// actions button for this branch
+                                    /// actions button for this branch
+                                    ...[
+                                      // rename branch
+                                      // rename branch
+                                      C.button('เปลี่ยนชื่อสาขา', () async {
+                                        C.dialog(
+                                            title: 'เปลี่ยนชื่อสาขา',
+                                            content: Form(
+                                              key: ctl.keyFormRenameBranch,
+                                              child: Column(
+                                                children: <Widget>[
+                                                  Padding(
+                                                    padding: const EdgeInsets.all(16),
+                                                    child: Text('ชื่อเดิม: ${branch.name}'),
+                                                  ),
+                                                  C.inputForm(ctl.branchNameRename, labelText: 'ชื่อใหม่', validator: (val) {
+                                                    return;
+                                                  }),
+                                                ],
+                                              ),
+                                            ),
+                                            actions: [
+                                              C.button('ยืนยัน', () async {
+                                                // SSS status = await ctl.renameBranch(branch.id!);
+                                                SSS status = await ctl.renameBranch(branch.id!);
+                                                switch (status) {
+                                                  case SSS.success:
+                                                    Get.back();
+                                                    break;
+                                                  default:
+                                                    C.dialogError('ไม่สำเร็จ ลบสาขาไม่สำเร็จ');
+                                                }
+                                              }),
+                                              C.buttonBack('กลับ', () {
+                                                Get.back();
+                                              })
+                                            ]);
+                                      }),
+                                      C.rowH(),
+
+                                      //// del this branch
+                                      //// del this branch
+                                      C.buttonDel('ลบสาขานี้', () async {
+                                        C.dialog(
+                                          title: 'ลบสาขานี้',
+                                          content: Column(
+                                            children: <Widget>[
+                                              Text('คุณต้องการลบ "${branch.name}" ?'),
+                                            ],
+                                          ),
+                                          actions: [
+                                            C.buttonDel('ยืนยัน', () async {
+                                              SSS status = await ctl.deleteBranch(branch.id!);
+                                              switch (status) {
+                                                case SSS.success:
+                                                  Get.back();
+                                                  break;
+                                                default:
+                                                  C.dialogError('ไม่สำเร็จ ลบสาขาไม่สำเร็จ');
+                                              }
+                                            }),
+                                            C.rowH(),
+                                            C.buttonBackTemplate(),
+                                          ],
+                                        );
+                                      }),
+                                    ],
+                                    const Text('text')
+
+                                    /// rename this branch
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                          C.rowH(),
+                          C.rowH(),
+                          C.rowH(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MySwitch extends StatelessWidget {
+  const MySwitch({
+    Key? key,
+    this.switchListTile,
+  }) : super(key: key);
+  final switchListTile;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: switchListTile,
+    );
+  }
+}

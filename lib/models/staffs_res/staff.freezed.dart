@@ -1,0 +1,571 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+
+part of 'staff.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+Staff _$StaffFromJson(Map<String, dynamic> json) {
+  return _Staff.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Staff {
+  String? get id => throw _privateConstructorUsedError;
+  DateTime? get lastLogin => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get nickname => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
+  DateTime? get dateJoined => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  int? get level => throw _privateConstructorUsedError;
+  String? get ownerFk => throw _privateConstructorUsedError;
+  String? get chainManagerFk => throw _privateConstructorUsedError;
+  String? get managerFk => throw _privateConstructorUsedError;
+  String? get branchFk => throw _privateConstructorUsedError;
+  int? get exp => throw _privateConstructorUsedError;
+  String? get tel => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
+  String? get facebook => throw _privateConstructorUsedError;
+  String? get line => throw _privateConstructorUsedError;
+  String? get ig => throw _privateConstructorUsedError;
+  String? get workingStatus => throw _privateConstructorUsedError;
+  String? get profileImageUrl => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $StaffCopyWith<Staff> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StaffCopyWith<$Res> {
+  factory $StaffCopyWith(Staff value, $Res Function(Staff) then) =
+      _$StaffCopyWithImpl<$Res>;
+  $Res call(
+      {String? id,
+      DateTime? lastLogin,
+      String? username,
+      String? nickname,
+      String? firstName,
+      String? lastName,
+      DateTime? dateJoined,
+      String? email,
+      int? level,
+      String? ownerFk,
+      String? chainManagerFk,
+      String? managerFk,
+      String? branchFk,
+      int? exp,
+      String? tel,
+      String? address,
+      String? facebook,
+      String? line,
+      String? ig,
+      String? workingStatus,
+      String? profileImageUrl});
+}
+
+/// @nodoc
+class _$StaffCopyWithImpl<$Res> implements $StaffCopyWith<$Res> {
+  _$StaffCopyWithImpl(this._value, this._then);
+
+  final Staff _value;
+  // ignore: unused_field
+  final $Res Function(Staff) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? lastLogin = freezed,
+    Object? username = freezed,
+    Object? nickname = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? dateJoined = freezed,
+    Object? email = freezed,
+    Object? level = freezed,
+    Object? ownerFk = freezed,
+    Object? chainManagerFk = freezed,
+    Object? managerFk = freezed,
+    Object? branchFk = freezed,
+    Object? exp = freezed,
+    Object? tel = freezed,
+    Object? address = freezed,
+    Object? facebook = freezed,
+    Object? line = freezed,
+    Object? ig = freezed,
+    Object? workingStatus = freezed,
+    Object? profileImageUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastLogin: lastLogin == freezed
+          ? _value.lastLogin
+          : lastLogin // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastName: lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateJoined: dateJoined == freezed
+          ? _value.dateJoined
+          : dateJoined // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      level: level == freezed
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ownerFk: ownerFk == freezed
+          ? _value.ownerFk
+          : ownerFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chainManagerFk: chainManagerFk == freezed
+          ? _value.chainManagerFk
+          : chainManagerFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      managerFk: managerFk == freezed
+          ? _value.managerFk
+          : managerFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      branchFk: branchFk == freezed
+          ? _value.branchFk
+          : branchFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      exp: exp == freezed
+          ? _value.exp
+          : exp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tel: tel == freezed
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      facebook: facebook == freezed
+          ? _value.facebook
+          : facebook // ignore: cast_nullable_to_non_nullable
+              as String?,
+      line: line == freezed
+          ? _value.line
+          : line // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ig: ig == freezed
+          ? _value.ig
+          : ig // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workingStatus: workingStatus == freezed
+          ? _value.workingStatus
+          : workingStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImageUrl: profileImageUrl == freezed
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_StaffCopyWith<$Res> implements $StaffCopyWith<$Res> {
+  factory _$$_StaffCopyWith(_$_Staff value, $Res Function(_$_Staff) then) =
+      __$$_StaffCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? id,
+      DateTime? lastLogin,
+      String? username,
+      String? nickname,
+      String? firstName,
+      String? lastName,
+      DateTime? dateJoined,
+      String? email,
+      int? level,
+      String? ownerFk,
+      String? chainManagerFk,
+      String? managerFk,
+      String? branchFk,
+      int? exp,
+      String? tel,
+      String? address,
+      String? facebook,
+      String? line,
+      String? ig,
+      String? workingStatus,
+      String? profileImageUrl});
+}
+
+/// @nodoc
+class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res>
+    implements _$$_StaffCopyWith<$Res> {
+  __$$_StaffCopyWithImpl(_$_Staff _value, $Res Function(_$_Staff) _then)
+      : super(_value, (v) => _then(v as _$_Staff));
+
+  @override
+  _$_Staff get _value => super._value as _$_Staff;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? lastLogin = freezed,
+    Object? username = freezed,
+    Object? nickname = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? dateJoined = freezed,
+    Object? email = freezed,
+    Object? level = freezed,
+    Object? ownerFk = freezed,
+    Object? chainManagerFk = freezed,
+    Object? managerFk = freezed,
+    Object? branchFk = freezed,
+    Object? exp = freezed,
+    Object? tel = freezed,
+    Object? address = freezed,
+    Object? facebook = freezed,
+    Object? line = freezed,
+    Object? ig = freezed,
+    Object? workingStatus = freezed,
+    Object? profileImageUrl = freezed,
+  }) {
+    return _then(_$_Staff(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastLogin: lastLogin == freezed
+          ? _value.lastLogin
+          : lastLogin // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastName: lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateJoined: dateJoined == freezed
+          ? _value.dateJoined
+          : dateJoined // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      level: level == freezed
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ownerFk: ownerFk == freezed
+          ? _value.ownerFk
+          : ownerFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chainManagerFk: chainManagerFk == freezed
+          ? _value.chainManagerFk
+          : chainManagerFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      managerFk: managerFk == freezed
+          ? _value.managerFk
+          : managerFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      branchFk: branchFk == freezed
+          ? _value.branchFk
+          : branchFk // ignore: cast_nullable_to_non_nullable
+              as String?,
+      exp: exp == freezed
+          ? _value.exp
+          : exp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tel: tel == freezed
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      facebook: facebook == freezed
+          ? _value.facebook
+          : facebook // ignore: cast_nullable_to_non_nullable
+              as String?,
+      line: line == freezed
+          ? _value.line
+          : line // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ig: ig == freezed
+          ? _value.ig
+          : ig // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workingStatus: workingStatus == freezed
+          ? _value.workingStatus
+          : workingStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImageUrl: profileImageUrl == freezed
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Staff implements _Staff {
+  _$_Staff(
+      {this.id,
+      this.lastLogin,
+      this.username,
+      this.nickname,
+      this.firstName,
+      this.lastName,
+      this.dateJoined,
+      this.email,
+      this.level,
+      this.ownerFk,
+      this.chainManagerFk,
+      this.managerFk,
+      this.branchFk,
+      this.exp,
+      this.tel,
+      this.address,
+      this.facebook,
+      this.line,
+      this.ig,
+      this.workingStatus,
+      this.profileImageUrl});
+
+  factory _$_Staff.fromJson(Map<String, dynamic> json) =>
+      _$$_StaffFromJson(json);
+
+  @override
+  final String? id;
+  @override
+  final DateTime? lastLogin;
+  @override
+  final String? username;
+  @override
+  final String? nickname;
+  @override
+  final String? firstName;
+  @override
+  final String? lastName;
+  @override
+  final DateTime? dateJoined;
+  @override
+  final String? email;
+  @override
+  final int? level;
+  @override
+  final String? ownerFk;
+  @override
+  final String? chainManagerFk;
+  @override
+  final String? managerFk;
+  @override
+  final String? branchFk;
+  @override
+  final int? exp;
+  @override
+  final String? tel;
+  @override
+  final String? address;
+  @override
+  final String? facebook;
+  @override
+  final String? line;
+  @override
+  final String? ig;
+  @override
+  final String? workingStatus;
+  @override
+  final String? profileImageUrl;
+
+  @override
+  String toString() {
+    return 'Staff(id: $id, lastLogin: $lastLogin, username: $username, nickname: $nickname, firstName: $firstName, lastName: $lastName, dateJoined: $dateJoined, email: $email, level: $level, ownerFk: $ownerFk, chainManagerFk: $chainManagerFk, managerFk: $managerFk, branchFk: $branchFk, exp: $exp, tel: $tel, address: $address, facebook: $facebook, line: $line, ig: $ig, workingStatus: $workingStatus, profileImageUrl: $profileImageUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Staff &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.lastLogin, lastLogin) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.nickname, nickname) &&
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality()
+                .equals(other.dateJoined, dateJoined) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.level, level) &&
+            const DeepCollectionEquality().equals(other.ownerFk, ownerFk) &&
+            const DeepCollectionEquality()
+                .equals(other.chainManagerFk, chainManagerFk) &&
+            const DeepCollectionEquality().equals(other.managerFk, managerFk) &&
+            const DeepCollectionEquality().equals(other.branchFk, branchFk) &&
+            const DeepCollectionEquality().equals(other.exp, exp) &&
+            const DeepCollectionEquality().equals(other.tel, tel) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.facebook, facebook) &&
+            const DeepCollectionEquality().equals(other.line, line) &&
+            const DeepCollectionEquality().equals(other.ig, ig) &&
+            const DeepCollectionEquality()
+                .equals(other.workingStatus, workingStatus) &&
+            const DeepCollectionEquality()
+                .equals(other.profileImageUrl, profileImageUrl));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(lastLogin),
+        const DeepCollectionEquality().hash(username),
+        const DeepCollectionEquality().hash(nickname),
+        const DeepCollectionEquality().hash(firstName),
+        const DeepCollectionEquality().hash(lastName),
+        const DeepCollectionEquality().hash(dateJoined),
+        const DeepCollectionEquality().hash(email),
+        const DeepCollectionEquality().hash(level),
+        const DeepCollectionEquality().hash(ownerFk),
+        const DeepCollectionEquality().hash(chainManagerFk),
+        const DeepCollectionEquality().hash(managerFk),
+        const DeepCollectionEquality().hash(branchFk),
+        const DeepCollectionEquality().hash(exp),
+        const DeepCollectionEquality().hash(tel),
+        const DeepCollectionEquality().hash(address),
+        const DeepCollectionEquality().hash(facebook),
+        const DeepCollectionEquality().hash(line),
+        const DeepCollectionEquality().hash(ig),
+        const DeepCollectionEquality().hash(workingStatus),
+        const DeepCollectionEquality().hash(profileImageUrl)
+      ]);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_StaffCopyWith<_$_Staff> get copyWith =>
+      __$$_StaffCopyWithImpl<_$_Staff>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_StaffToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Staff implements Staff {
+  factory _Staff(
+      {final String? id,
+      final DateTime? lastLogin,
+      final String? username,
+      final String? nickname,
+      final String? firstName,
+      final String? lastName,
+      final DateTime? dateJoined,
+      final String? email,
+      final int? level,
+      final String? ownerFk,
+      final String? chainManagerFk,
+      final String? managerFk,
+      final String? branchFk,
+      final int? exp,
+      final String? tel,
+      final String? address,
+      final String? facebook,
+      final String? line,
+      final String? ig,
+      final String? workingStatus,
+      final String? profileImageUrl}) = _$_Staff;
+
+  factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
+
+  @override
+  String? get id;
+  @override
+  DateTime? get lastLogin;
+  @override
+  String? get username;
+  @override
+  String? get nickname;
+  @override
+  String? get firstName;
+  @override
+  String? get lastName;
+  @override
+  DateTime? get dateJoined;
+  @override
+  String? get email;
+  @override
+  int? get level;
+  @override
+  String? get ownerFk;
+  @override
+  String? get chainManagerFk;
+  @override
+  String? get managerFk;
+  @override
+  String? get branchFk;
+  @override
+  int? get exp;
+  @override
+  String? get tel;
+  @override
+  String? get address;
+  @override
+  String? get facebook;
+  @override
+  String? get line;
+  @override
+  String? get ig;
+  @override
+  String? get workingStatus;
+  @override
+  String? get profileImageUrl;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StaffCopyWith<_$_Staff> get copyWith =>
+      throw _privateConstructorUsedError;
+}
